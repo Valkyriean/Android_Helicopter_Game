@@ -55,6 +55,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     //is first game
     private boolean firstGame;
     private boolean better;
+    private boolean suck = false;//just for fun here
 
     //***********************Long Variables**************//
     //the time when smoke start creating, use to count down when need next smoke
@@ -521,11 +522,15 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
         maxBorderHeight = 30;
 
         //check if did better then last time
-        if(player.getScore()>best){
+        if(player.getScore()<50){
+            suck = true;
+        }else if(player.getScore()>best){
             best = player.getScore();
             better = true;
+            suck=false;
         }else{
             better = false;
+            suck=false;
         }
 
         //reset player position and score
@@ -592,6 +597,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
                 if(better){
                     paint1.setColor(Color.MAGENTA);
                     canvas.drawText("You are the best", WIDTH/2 - 50 , HEIGHT/2-40, paint1);
+                }else if(suck){
+                    canvas.drawText("YOU SUCK", WIDTH/2 - 50 , HEIGHT/2-40, paint1);
                 }else{
                     canvas.drawText("You lose", WIDTH/2 - 50 , HEIGHT/2-40, paint1);
 

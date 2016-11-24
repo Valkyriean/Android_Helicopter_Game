@@ -17,7 +17,7 @@ public class game extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //no title bar
+        //fuck the title bar
         //干掉标题
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         //full screen
